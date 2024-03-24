@@ -10,7 +10,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 
 const Testimonial = () => {
     const [reviews, setReviews] = useState([]);
-    fetch("reviews.json")
+    fetch("http://localhost:5000/reviews")
         .then((res) => res.json())
         .then((data) => setReviews(data));
     return (

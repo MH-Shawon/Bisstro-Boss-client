@@ -17,7 +17,7 @@ const NavLinks=()=>{
                 <NavLink to='/menu'>Our Menu</NavLink>
             </li>
             <li>
-                <NavLink to='/shop'>Our Shop</NavLink>
+                <NavLink to='/shop/salad'>Our Shop</NavLink>
             </li>
         </>
     )}
