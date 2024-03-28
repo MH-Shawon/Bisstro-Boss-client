@@ -33,15 +33,17 @@ const Navbar = () => {
         <Link to='/'>
           <a className="btn btn-ghost text-xl">Bistro Boss</a>
         </Link>
-        
+
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-.5 uppercase font-bold text-xl fo">
           <NavLinks />
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end mr-2 ">
+        <Link to="/login" className="btn btn-outline text-white">
+          Login
+        </Link>
       </div>
     </div>
   );
