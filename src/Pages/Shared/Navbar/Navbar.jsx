@@ -1,8 +1,20 @@
 
 import { Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(result => {
+
+      }).
+      catch(error => {
+        console.log(error)
+      });
+  }
   return (
     <div className="navbar fixed z-10 bg-gray-600 text-white max-w-screen-xl bg-opacity-40">
       <div className="navbar-start">
@@ -41,9 +53,48 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end mr-2 ">
-        <Link to="/login" className="btn btn-outline text-white">
-          Login
-        </Link>
+        <div>
+          {user?.email ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user?.photoURL}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content text-black bg-base-100 rounded-box w-40"
+              >
+                <li>
+                  <a className="flex items-center justify-center">
+                    {user?.displayName}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="flex items-center justify-center"
+                    onClick={handleLogOut}
+                  >
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="navbar-end">
+              <Link to="/login" className="btn btn-outline">
+                Login
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
