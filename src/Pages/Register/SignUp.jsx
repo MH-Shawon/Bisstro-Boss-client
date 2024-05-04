@@ -8,9 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import GoogleBtnLogin from "../../Components/SocialLoigin/SocialBtn";
+import SocialBtn from "../../Components/SocialLoigin/SocialBtn";
 // import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
+  
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, updateUser } = useContext(AuthContext);
@@ -24,13 +29,24 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser)
+        
         
         return updateUser(data.name);
       })
       .then(() => {
-        toast.success("User Created Successfully")
-        navigate("/");
+        
+        const userInfo={
+          name: data.name,
+          email: data.email 
+        }
+        axiosPublic.post('/users', userInfo)
+        .then(res=>{
+          console.log(res.data);
+          if(res.data.insertedId){
+             toast.success("User Created Successfully")
+             navigate("/");
+          }
+        })
       })
       .catch((error) => {
         console.error('Error creating or updating user:', error);
@@ -141,13 +157,26 @@ const SignUp = () => {
                 value="Sign Up"
               />
             </div>
+            
             <div className="text-[#D1A054] text-center">
               <Link to="/login">
                 <p className="font-medium text-xl tracking-tighter">
                   Already registered?{" "}
                   <span className="font-semibold text-xl">Go to log in</span>
                 </p>
+                
               </Link>
+              
+            </div>
+            <div>
+              
+                <h4 className="text-center">Or sign in with</h4>
+              <span className="flex items-center justify-center">
+                <SocialBtn />
+              </span>
+              
+              
+              
             </div>
           </form>
         </div>

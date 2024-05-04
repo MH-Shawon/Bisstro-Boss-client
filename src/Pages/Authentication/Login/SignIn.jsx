@@ -13,6 +13,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import toast from "react-hot-toast";
+import SocialBtn from "../../../Components/SocialLoigin/SocialBtn";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -156,6 +157,17 @@ const Login = () => {
                   </span>
                 </p>
               </Link>
+            
+            </div>
+            <div>
+
+              <h4 className="text-center">Or sign in with</h4>
+              <span className="flex items-center justify-center">
+                <SocialBtn />
+              </span>
+
+
+
             </div>
           </form>
         </div>

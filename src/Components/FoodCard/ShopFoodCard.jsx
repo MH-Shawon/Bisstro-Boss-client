@@ -12,7 +12,7 @@ const ShopFoodCard = ({ item }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const [refetch] = useCart();
+  const [cart,refetch] = useCart();
 
   const handleAddToCart = () => {
     if (user && user.email) {
@@ -24,6 +24,7 @@ const ShopFoodCard = ({ item }) => {
         price,
       };
       axios.post("http://localhost:5000/carts", cartItem).then((res) => {
+        
         if (res.data.insertedId) {
           toast.success(`${name} added to your cart`);
           refetch();
