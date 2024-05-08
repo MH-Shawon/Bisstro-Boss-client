@@ -1,16 +1,26 @@
-import { ClipLoader } from "react-spinners";
-import { css } from "@emotion/react";
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+
+import { useState } from "react";
+
 
 const LoadingSpinner = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Simulate 2 seconds of loading
+  };
   return (
-    <div className="flex justify-center items-center h-screen">
-      <ClipLoader css={override} size={60} color={"#36D7B7"} />
+    <div>
+      <button onClick={handleClick}>Start Loading</button>
+      {isLoading && (
+        <div className="loading-spinner flex justify-center items-center">
+          <div className="w-8 h-8 rounded-full bg-gray-200 animate-spin"></div>
+          <div className="w-8 h-8 rounded-full bg-gray-200 animate-spin delay-500"></div>
+        </div>
+      )}
     </div>
   );
 };
 export default LoadingSpinner;
+

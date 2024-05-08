@@ -8,6 +8,7 @@ import SignUp from "../Pages/Register/SignUp";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Layouts/Dashboard/AllUsers/AllUsers";
+import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 
 
 export const router = createBrowserRouter([
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path:'users',
         element: <AllUsers />
+      },
+      {
+        path:'addItems',
+        element: <AddItem />
       }
     ],
   },
