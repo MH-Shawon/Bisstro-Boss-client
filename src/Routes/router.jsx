@@ -9,6 +9,8 @@ import Dashboard from "../Layouts/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Layouts/Dashboard/AllUsers/AllUsers";
 import AddItem from "../Pages/Dashboard/AddItem/AddItem";
+import ManageItem from '../Pages/Dashboard/ManageItem/ManageItem';
+import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
 
 
 export const router = createBrowserRouter([
@@ -25,8 +27,37 @@ export const router = createBrowserRouter([
         element: <OurMenu />,
       },
       {
-        path: "shop/:category",
+        path: "/shop/:category",
         element: <OurShop />,
+      },
+    ],
+  },
+  
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+
+    children: [
+      {
+        path: "/dashboard/cart",
+        element: <Cart />,
+      },
+      {
+        path:'/dashboard/users',
+        element: <AllUsers />
+      },
+      {
+        path:'/dashboard/addItems',
+        element: <AddItem />
+      },
+      {
+        path:'/dashboard/manageItems',
+        element:<ManageItem />
+      },
+      {
+        path:'/dashboard/updateItem/:id',
+        element:<UpdateItem />,
+        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
       },
     ],
   },
@@ -38,23 +69,4 @@ export const router = createBrowserRouter([
     path: "/signUp",
     element: <SignUp />,
   },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-
-    children: [
-      {
-        path: "cart",
-        element: <Cart />,
-      },
-      {
-        path:'users',
-        element: <AllUsers />
-      },
-      {
-        path:'addItems',
-        element: <AddItem />
-      }
-    ],
-  },
-]);
+])
