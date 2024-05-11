@@ -5,7 +5,9 @@ import { useLoaderData } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const UpdateItem = () => {
-    const {name,category,recipe,price,_id} = useLoaderData();
+  const { _id, name, recipe, category, price } = useLoaderData();
+    
+
     
     const axiosSecure=useAxiosSecure()
   const {
@@ -61,11 +63,12 @@ const UpdateItem = () => {
                 className="border border-gray-300 rounded-md px-2 py-1.5 focus:outline-none focus:ring-1 w-full mt-2"
               >
                 <option value="">Select Category</option>
-                <option value="SALAD">Salad</option>
-                <option value="PIZZA">Pizza</option>
-                <option value="SOUPS">Soups</option>
-                <option value="DESSERTS">Desserts</option>
-                <option value="DRINKS">Drinks</option>
+                <option value="salad">Salad</option>
+                <option value="pizza">Pizza</option>
+                <option value="soups">Soups</option>
+                <option value="desserts">Desserts</option>
+                <option value="drinks">Drinks</option>
+                <option value="popular">Popular</option>
               </select>
               {errors.category && (
                 <span className="error">Category is required</span>

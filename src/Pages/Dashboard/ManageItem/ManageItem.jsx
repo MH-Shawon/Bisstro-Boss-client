@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const ManageItem = () => {
-    const [menu, loading, refetch] = useMenu();
+    const [menu, refetch] = useMenu();
   const axiosSecure = useAxiosSecure();
 
   const handleDelete = (item) => {
@@ -70,7 +70,7 @@ const ManageItem = () => {
                     <img src={item.image} alt={item.name} />
                   </td>
                   <td>{item.name}</td>
-                  <td>${item.price.toFixed(2)}</td>
+                  <td>${item.price}</td>
                   <td>
 <Link to={`/dashboard/updateItem/${item._id}`}>
                               <button className="bg-[#D1A054] text-white text-xl px-3 py-1 rounded w-[40px] h-[40px]">

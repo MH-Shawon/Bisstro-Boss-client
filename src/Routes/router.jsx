@@ -11,6 +11,7 @@ import AllUsers from "../Layouts/Dashboard/AllUsers/AllUsers";
 import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import ManageItem from '../Pages/Dashboard/ManageItem/ManageItem';
 import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -42,6 +43,8 @@ export const router = createBrowserRouter([
         path: "/dashboard/cart",
         element: <Cart />,
       },
+
+      // admin routes 
       {
         path:'/dashboard/users',
         element: <AllUsers />
@@ -59,6 +62,12 @@ export const router = createBrowserRouter([
         element:<UpdateItem />,
         loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
       },
+
+      // payment routes 
+      {
+        path:'/dashboard/payment',
+        element: <Payment />
+      }
     ],
   },
   {

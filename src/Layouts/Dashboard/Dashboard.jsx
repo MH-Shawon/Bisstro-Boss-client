@@ -10,7 +10,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
 
-  const isAdmin = true;
+  const isAdmin =false;
   
   return (
       <div className="flex text-[#151515] font-cinzel uppercase">
@@ -58,14 +58,14 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="dashboard/reservation">
+                  <NavLink to="/dashboard/payment">
                     {" "}
                     <FaCalendarAlt />
                     reservation
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="dashboard/payment">
+                  <NavLink to="dashboard/paymentHistory">
                     {" "}
                     <MdOutlinePayment />
                     payment history
