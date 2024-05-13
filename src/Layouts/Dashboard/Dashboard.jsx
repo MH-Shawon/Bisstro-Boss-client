@@ -4,16 +4,18 @@ import { GiShoppingBag } from "react-icons/gi";
 import { IoMenu } from "react-icons/io5";
 import { MdEditCalendar, MdEmail, MdOutlinePayment, MdReviews } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 
 
 
 const Dashboard = () => {
+  const [cart] = useCart();
 
   const isAdmin =false;
   
   return (
-      <div className="flex text-[#151515] font-cinzel uppercase">
+    <div className="flex text-[#151515] font-cinzel uppercase bg-[#F6F6F6]">
       <div className="bg-[#D1A054] w-[280px] min-h-screen pl-8  font-medium">
         <div className="mt-12 pl-6 font-black text-[23px]">
                   <h2>BISTRO BOSS</h2>
@@ -58,14 +60,14 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/payment">
+                  <NavLink to="/dashboard/reservation">
                     {" "}
                     <FaCalendarAlt />
                     reservation
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="dashboard/paymentHistory">
+                  <NavLink to="/dashboard/paymentHistory">
                     {" "}
                     <MdOutlinePayment />
                     payment history
@@ -75,7 +77,7 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/cart">
                     {" "}
                     <FaCartShopping />
-                    My Cart
+                    My Cart({cart.length})
                   </NavLink>
                 </li>
                 <li>
@@ -112,7 +114,7 @@ const Dashboard = () => {
                       </NavLink>
                   </li>
                   <li>
-                      <NavLink to="dashboard/menu">
+                      <NavLink to="/menu">
                           {" "}
                           <IoMenu />
                           menu
