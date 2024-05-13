@@ -41,7 +41,7 @@ const SignUp = () => {
         }
         axiosPublic.post('/users', userInfo)
         .then(res=>{
-          console.log(res.data);
+
           if(res.data.insertedId){
              toast.success("User Created Successfully")
              navigate("/");

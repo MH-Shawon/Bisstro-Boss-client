@@ -5,6 +5,7 @@ import { IoMenu } from "react-icons/io5";
 import { MdEditCalendar, MdEmail, MdOutlinePayment, MdReviews } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 
 
 
@@ -12,7 +13,9 @@ import useCart from "../../hooks/useCart";
 const Dashboard = () => {
   const [cart] = useCart();
 
-  const isAdmin =false;
+const [isAdmin] =useAdmin();
+
+
   
   return (
     <div className="flex text-[#151515] font-cinzel uppercase bg-[#F6F6F6]">
