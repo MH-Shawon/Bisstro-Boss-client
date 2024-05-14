@@ -43,7 +43,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to='/'>
-          <a className="btn btn-ghost text-xl">Bistro Boss</a>
+          <li className="btn btn-ghost text-xl">Bistro Boss</li>
         </Link>
 
       </div>

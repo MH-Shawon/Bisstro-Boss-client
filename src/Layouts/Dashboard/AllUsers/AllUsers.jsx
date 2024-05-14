@@ -12,13 +12,13 @@ const AllUsers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users" );
-      
-      return res.data;
+      console.log('where is my issues?',res.data);
+      return res?.data;
     },
   });
 
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`/users/admin/${user._id}`)
+    axiosSecure.put(`/users/admin/${user._id}`)
     .then((res) => {
       console.log(res.data);
 
@@ -87,12 +87,12 @@ const AllUsers = () => {
             <tbody>
               {/* row 1 */}
 
-              {users.map((user, index) => (
+              {users?.map((user, index) => (
                 <tr className="text-center" key={user._id}>
                   <th>{index + 1}</th>
 
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
+                  <td>{user?.name}</td>
+                  <td>{user?.email}</td>
                   <td>{
                     user.role === 'admin' ? 'Admin' : <button
                       onClick={() => handleMakeAdmin(user)}
