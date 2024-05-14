@@ -14,6 +14,7 @@ const Dashboard = () => {
   const [cart] = useCart();
 
 const [isAdmin] =useAdmin();
+// const isAdmin = true
 
 
   
@@ -56,7 +57,7 @@ const [isAdmin] =useAdmin();
             </>:
             <>
                 <li>
-                  <NavLink to="dashboard/home">
+                  <NavLink to="/dashboard/userHome">
                     {" "}
                     <FaHome />
                     User Home

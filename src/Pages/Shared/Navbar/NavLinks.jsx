@@ -1,8 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
 const NavLinks = () => {
     const [cart] = useCart()
+    const {user} = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    // console.log('admin is coming here??',isAdmin);
     return (
         <>
             <li>
@@ -12,9 +18,7 @@ const NavLinks = () => {
                 <NavLink to='/contact'>Contact Us</NavLink>
 
             </li>
-            <li>
-                <NavLink to='/dashboard'>Dashboard</NavLink>
-            </li>
+            
             <li>
                 <NavLink to='/menu'>Our Menu</NavLink>
             </li>
@@ -22,6 +26,17 @@ const NavLinks = () => {
             <li>
                 <NavLink to='/shop/salad'>Our Shop</NavLink>
             </li>
+            {
+                user && isAdmin && <li>
+                    <NavLink to='/dashboard/adminHome'>Dashboard</NavLink>
+                </li>
+            }
+            {
+                user && !isAdmin && <li>
+                    <NavLink to='/dashboard/userHome'>Dashboard</NavLink>
+                </li>
+            }
+            
             <li className="my-auto">
                 <NavLink to='/dashboard/cart'>
                     <div className="relative inline-flex">

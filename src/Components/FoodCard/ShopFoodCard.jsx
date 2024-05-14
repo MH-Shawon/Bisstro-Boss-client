@@ -7,12 +7,12 @@ import toast from "react-hot-toast";
 import useCart from "../../hooks/useCart";
 
 const ShopFoodCard = ({ item }) => {
-  
+
   const { image, name, price, recipe, _id } = item;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const [cart,refetch] = useCart();
+  const [cart, refetch] = useCart();
 
   const handleAddToCart = () => {
     if (user && user.email) {
@@ -23,15 +23,15 @@ const ShopFoodCard = ({ item }) => {
         name,
         price,
       };
-      axios.post("http://localhost:5000/carts", cartItem).then((res) => {
-        
+      axios.post("https://bistro-boss-server-wine-omega.vercel.app/carts", cartItem).then((res) => {
+
         if (res.data.insertedId) {
           toast.success(`${name} added to your cart`);
           refetch();
         }
-        
+
       });
-      
+
     } else {
       Swal.fire({
         title: "You are not logged In",

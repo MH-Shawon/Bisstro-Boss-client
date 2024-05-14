@@ -9,7 +9,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import GoogleBtnLogin from "../../Components/SocialLoigin/SocialBtn";
+
 import SocialBtn from "../../Components/SocialLoigin/SocialBtn";
 // import toast from "react-hot-toast";
 
@@ -31,13 +31,13 @@ const SignUp = () => {
         const loggedUser = result.user;
         
         
-        return updateUser(data.name);
+        return updateUser(data?.name);
       })
       .then(() => {
         
         const userInfo={
-          name: data.name,
-          email: data.email 
+          name: data?.name,
+          email: data?.email 
         }
         axiosPublic.post('/users', userInfo)
         .then(res=>{

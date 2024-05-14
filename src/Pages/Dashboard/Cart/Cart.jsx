@@ -11,36 +11,36 @@ const Cart = () => {
   const totalPrice = cart
     .reduce((total, item) => total + item.price, 0)
     .toFixed(1);
-    const  handleDelete =(id)=>{
+  const handleDelete = (id) => {
 
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5000/carts/${id}`)
-                .then(res=>{
-                    refetch()
-                    if(res.deletedCount>0){
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                        });
-                    }
-                })
+
+        axios.delete(`https://bistro-boss-server-wine-omega.vercel.app/carts/${id}`)
+          .then(res => {
+            refetch()
+            if (res.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
             }
-        });
+          })
+      }
+    });
 
 
-    }
+  }
   return (
     <div className="bg-[#F6F6F6]">
       <SectionTitle
@@ -52,19 +52,19 @@ const Cart = () => {
           <h4>TOTAL ORDERS:{cart.length}</h4>
           <h4>TOTAL price:${totalPrice}</h4>
 
-{
+          {
             cart.length ? <Link to='/dashboard/payment'>
               <button className="bg-[#D1A054] text-[20px] rounded-lg text-white pb-1 px-4">
                 pay
               </button>
-            </Link> : 
+            </Link> :
               <button disabled className="bg-[#CCCCCC] text-[20px] rounded-lg text-white pb-1 px-4">
                 pay
               </button>
-            
-}
-          
-          
+
+          }
+
+
         </div>
 
         <div className=" rounded-lg overflow-x-auto mt-9 w-[740px] mx-auto">
@@ -91,7 +91,7 @@ const Cart = () => {
                   <td>{item.name}</td>
                   <td>${item.price.toFixed(2)}</td>
                   <td className="text-center">
-                    <button onClick={()=>handleDelete(item._id)} className="bg-[#B91C1C] text-white px-3 py-1 rounded w-[40px] h-[40px]">
+                    <button onClick={() => handleDelete(item._id)} className="bg-[#B91C1C] text-white px-3 py-1 rounded w-[40px] h-[40px]">
                       <RiDeleteBin5Line />
                     </button>
                   </td>
