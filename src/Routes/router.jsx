@@ -15,6 +15,8 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import PrivateRoute from "./PvtRoute/PrivateRoute";
+import AdminRoute from "./AdminRoute/AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +40,7 @@ export const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
 
     children: [
 
@@ -46,24 +48,24 @@ export const router = createBrowserRouter([
       // admin routes
       {
         path: "adminHome",
-        element: <AdminHome />,
+        element: <AdminRoute><AdminHome /></AdminRoute>,
       },
 
       {
         path: "/dashboard/users",
-        element: <AllUsers />,
+        element: <AdminRoute><AllUsers /></AdminRoute>,
       },
       {
         path: "/dashboard/addItems",
-        element: <AddItem />,
+        element: <AdminRoute><AddItem /></AdminRoute>,
       },
       {
         path: "/dashboard/manageItems",
-        element: <ManageItem />,
+        element: <AdminRoute><ManageItem /></AdminRoute>,
       },
       {
         path: "/dashboard/updateItem/:id",
-        element: <UpdateItem />,
+        element: <AdminRoute><UpdateItem /></AdminRoute>,
         loader: ({ params }) =>
           fetch(`https://bistro-boss-server-wine-omega.vercel.app/menu/${params.id}`),
       },
