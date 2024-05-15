@@ -16,7 +16,7 @@ const PopularMenu = () => {
                     popularItems.map(item => <MenuItems key={item._id} item={item}></MenuItems>)
                 }
             </div>
-            <Link className="flex justify-center ">
+            <Link to='/menu' className="flex justify-center ">
                 <button className="btn btn-outline border-0 border-b-4 mt-4">View Full Menu</button>
             </Link>
         </section>
