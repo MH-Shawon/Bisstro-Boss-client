@@ -118,7 +118,7 @@ const [isAdmin] =useAdmin();
                       </NavLink>
                   </li>
                   <li>
-                      <NavLink to="/menu">
+            <NavLink to="/shop/salad">
                           {" "}
                           <IoMenu />
                           menu

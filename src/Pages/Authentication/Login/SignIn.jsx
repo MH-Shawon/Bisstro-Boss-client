@@ -43,7 +43,7 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        navigate(location?.state ? location?.state : "/");
+        navigate(location?.state ?. from?.pathname || "/");
       })
       .catch((error) => {
         if (error) {
