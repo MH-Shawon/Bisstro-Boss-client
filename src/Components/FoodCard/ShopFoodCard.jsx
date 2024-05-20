@@ -23,7 +23,7 @@ const ShopFoodCard = ({ item }) => {
         name,
         price,
       };
-      axios.post("http://localhost:5000/carts", cartItem).then((res) => {
+      axios.post("https://bistro-boss-server-wine-omega.vercel.app/carts", cartItem).then((res) => {
 
         if (res.data.insertedId) {
           toast.success(`${name} added to your cart`);

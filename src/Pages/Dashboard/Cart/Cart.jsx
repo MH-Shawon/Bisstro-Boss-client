@@ -25,7 +25,7 @@ const Cart = () => {
       if (result.isConfirmed) {
 
 
-        axios.delete(`http://localhost:5000/carts/${id}`)
+        axios.delete(`https://bistro-boss-server-wine-omega.vercel.app/carts/${id}`)
           .then(res => {
             refetch()
             if (res.deletedCount > 0) {
