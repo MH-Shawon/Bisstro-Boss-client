@@ -54,13 +54,14 @@ const Login = () => {
 
   return (
     <div
-      className="hero min-h-screen "
+      className="min-h-screen hero "
       style={{
         backgroundImage: `url(${AuthBg})`,
       }}
     >
       <Helmet>
         <title>Bistro Boss | Login</title>
+        
       </Helmet>
 
       <div
@@ -73,14 +74,14 @@ const Login = () => {
           <img src={loginAuth} alt="" />
         </div>
 
-        <div className=" w-1/2 max-w-sm ">
+        <div className="w-1/2 max-w-sm ">
           <div className="text-center ">
-            <h1 className="text-4xl tracking-tighter font-bold">
+            <h1 className="text-4xl font-bold tracking-tighter">
               Welcome back!
             </h1>
             <p className="py-2">Please enter your details</p>
           </div>
-          <form onSubmit={handleLogin} className="card-body -mt-10 ">
+          <form onSubmit={handleLogin} className="-mt-10 card-body ">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -93,7 +94,7 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="form-control relative">
+            <div className="relative form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -134,7 +135,7 @@ const Login = () => {
                 onBlur={handleValidate}
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered mt-8"
+                className="mt-8 input input-bordered"
                 required
               />
             </div>
@@ -150,9 +151,9 @@ const Login = () => {
             </div>
             <div className="text-[#D1A054] text-center">
               <Link to="/signUp">
-                <p className="font-medium text-xl tracking-tighter">
+                <p className="text-xl font-medium tracking-tighter">
                   New here?{" "}
-                  <span className="font-semibold text-xl">
+                  <span className="text-xl font-semibold">
                     Create a New Account
                   </span>
                 </p>

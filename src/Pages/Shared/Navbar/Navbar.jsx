@@ -1,28 +1,30 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate()
   const handleLogOut = () => {
     logOut()
-      .then(result => {
-
-      }).
-      catch(error => {
-        console.log(error)
+      .then(() => {
+        console.log('Logged out successfully');
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log('Logout error:', error);
       });
-  }
+  };
   return (
-    <div className="navbar fixed z-10 bg-gray-600 text-white max-w-screen-xl bg-opacity-40">
+    <div className="fixed z-10 max-w-screen-xl text-white bg-gray-600 navbar bg-opacity-40">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="w-5 h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -43,16 +45,16 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to='/'>
-          <li className="btn btn-ghost text-xl">Bistro Boss</li>
+          <li className="text-xl btn btn-ghost">Bistro Boss</li>
         </Link>
 
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="hidden navbar-center lg:flex">
         <ul className="menu menu-horizontal px-.5 uppercase font-bold text-xl fo">
           <NavLinks />
         </ul>
       </div>
-      <div className="navbar-end mr-2 ">
+      <div className="mr-2 navbar-end ">
         <div>
           {user?.email ? (
             <div className="dropdown dropdown-end">
