@@ -12,7 +12,7 @@ const AllUsers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users" );
-      console.log('where is my issues?',res.data);
+    
       return res?.data;
     },
   });
@@ -22,7 +22,7 @@ const AllUsers = () => {
     .then((res) => {
       console.log(res.data);
 
-      if (res.data.modifiedCount > 0) {
+      if (res.data) {
         refetch();
         Swal.fire({
           position: "top-end",
@@ -76,7 +76,7 @@ const AllUsers = () => {
           <table className="table">
             {/* head */}
             <thead className="bg-[#D1A054] h-[72px] rounded-lg">
-              <tr className="uppercase text-center text-white">
+              <tr className="text-center text-white uppercase">
                 <th></th>
                 <th>Name</th>
                 <th>Email</th>
