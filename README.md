@@ -16,12 +16,12 @@ This project is an e-commerce website tailored for managing foods. It provides a
 - **Payment Gateway:** Secure and seamless payment processing using Stripe.
 
 ## How to Run Locally
-1. Clone the repository to your local machine: `git clone https://github.com/yourusername/power-tools-ecommerce.git`
-2. Navigate to the project directory: `cd power-tools-eCommerce`
+1. Clone the repository to your local machine: `git clone https://github.com/MH-Shawon/Restaurant-Boss-client.git`
+2. Navigate to the project directory: `cd Restaurant-Boss-client`
 3. Install dependencies: `npm install` or `yarn install`
 4. Set up the database and configure environment variables as per the provided documentation.
 5. Start the development server: `npm start` or `yarn start`
-6. Access the application in your web browser at `http://localhost:5000`
+6. Access the application in your web browser at `http://localhost:5173`
 
 ## Technologies Used
 - Frontend: HTML, CSS, JavaScript, React-js
